@@ -4,7 +4,7 @@ use App\Http\Middleware\{ CheckRoleHierarchy, CheckUserHierarchy, Localization }
 use App\Livewire\Ability\AbilityRole;
 use App\Livewire\Role;
 use App\Livewire\User\{ UserRole };
-use App\Livewire\{City, Dashboard, Group, People, Profile, User};
+use App\Livewire\{Dashboard, Profile, User};
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(Localization::class)->group(function () {
