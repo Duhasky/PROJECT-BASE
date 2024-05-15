@@ -4,13 +4,13 @@
     <div class="flex justify-between h-16">
       <div class="flex flex-wrap">
         <!-- Logo -->
-        <div class="shrink-0 flex items-center">
+        {{-- <div class="shrink-0 flex items-center">
           <x-application-logo class="cursor-pointer block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" :href="route('dashboard')" wire:navigate />
-        </div>
+        </div> --}}
         <!-- Navigation Links -->
         @foreach ($navs as $nav)
           @can($nav->permission)
-            <div class="hidden sm:-my-px sm:ms-2 sm:flex">
+            <div class="hidden sm:-my-px sm:mr-2 sm:flex">
               <x-nav-link :href="route($nav->route)" :active="$nav->isActive" wire:navigate> {{ __($nav->label) }} </x-nav-link>
             </div>
           @endcan
@@ -35,6 +35,11 @@
           </x-slot>
 
           <x-slot name="content">
+          @if (session('localization') == 'pt-br' || !session('localization'))
+            <x-dropdown-link wire:click="setLang('en')" class="cursor-pointer w-full text-start" > English </x-dropdown-link>
+          @else
+            <x-dropdown-link wire:click="setLang('pt-br')" class="cursor-pointer w-full text-start"> Português </x-dropdown-link>
+          @endif
             <x-dropdown-link :href="route('profile')" wire:navigate> {{ __('Profile') }} </x-dropdown-link>
 
             <x-dropdown-link wire:click="logout" class="cursor-pointer w-full text-start"> {{ __('Log Out') }} </x-dropdown-link>
@@ -75,6 +80,11 @@
       </div>
 
       <div class="mt-3 space-y-1">
+        @if (session('localization') == 'pt-br' || !session('localization'))
+          <x-responsive-nav-link wire:click="setLang('en')"> English </x-responsive-nav-link>
+        @else
+          <x-responsive-nav-link wire:click="setLang('pt-br')"> Português </x-responsive-nav-link>
+        @endif
         <x-responsive-nav-link :href="route('profile')" wire:navigate> {{ __('Profile') }} </x-responsive-nav-link>
 
         <!-- Authentication -->
