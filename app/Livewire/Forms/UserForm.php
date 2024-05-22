@@ -25,18 +25,20 @@ class UserForm extends Form
 
     public ?string $password = null;
 
+    public ?string $password_confirmation = null;
+
     /** @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string> */
     public function rules()
     {
         $rules = [
             'name'          => ['required', 'min:3', 'max:255'],
-            'user_name'     => ['required', 'min:3', 'max:30'],
+            'user_name'     => ['required', 'min:3', 'max:30', Rule::unique(User::class)->ignore($this->id)],
             'email'         => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($this->id)],
             'regist_number' => ['required', 'size:8', Rule::unique(User::class)->ignore($this->id)],
         ];
 
         if (!$this->id) {
-            $rules['password'] = ['required', Password::min(4), 'max:12'];
+            $rules['password'] = ['required', Password::min(4), 'max:12', 'confirmed'];
         }
 
         return $rules;

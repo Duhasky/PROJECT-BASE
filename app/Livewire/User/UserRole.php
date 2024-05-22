@@ -26,4 +26,5 @@ class UserRole extends Component
     {
         $this->user->roles()->toggle($role_id);
     }
+
 }

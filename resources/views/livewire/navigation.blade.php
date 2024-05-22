@@ -35,10 +35,10 @@
           </x-slot>
 
           <x-slot name="content">
-          @if (session('localization') == 'pt-br' || !session('localization'))
+          @if (session('localization') == 'pt_BR' || !session('localization'))
             <x-dropdown-link wire:click="setLang('en')" class="cursor-pointer w-full text-start" > English </x-dropdown-link>
           @else
-            <x-dropdown-link wire:click="setLang('pt-br')" class="cursor-pointer w-full text-start"> Português </x-dropdown-link>
+            <x-dropdown-link wire:click="setLang('pt_BR')" class="cursor-pointer w-full text-start"> Português </x-dropdown-link>
           @endif
             <x-dropdown-link :href="route('profile')" wire:navigate> {{ __('Profile') }} </x-dropdown-link>
 
@@ -80,10 +80,10 @@
       </div>
 
       <div class="mt-3 space-y-1">
-        @if (session('localization') == 'pt-br' || !session('localization'))
+        @if (session('localization') == 'pt_BR' || !session('localization'))
           <x-responsive-nav-link wire:click="setLang('en')"> English </x-responsive-nav-link>
         @else
-          <x-responsive-nav-link wire:click="setLang('pt-br')"> Português </x-responsive-nav-link>
+          <x-responsive-nav-link wire:click="setLang('pt_BR')"> Português </x-responsive-nav-link>
         @endif
         <x-responsive-nav-link :href="route('profile')" wire:navigate> {{ __('Profile') }} </x-responsive-nav-link>
 
