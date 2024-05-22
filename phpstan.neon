@@ -7,7 +7,7 @@ parameters:
         - app/
 
     # Level 9 is the highest level
-    level: 5
+    level: 6
 
     ignoreErrors:
 #        - '#PHPDoc tag @var#'
@@ -16,4 +16,10 @@ parameters:
 #        - ./*/*/FileToBeExcluded.php
 #
 #    checkMissingIterableValueType: false
-#    checkGenericClassInNonGenericObjectType: false
+    -
+            identifier: missingType.generics
+
+    parallel:
+      jobSize: 20
+      maximumNumberOfProcesses: 32
+      minimumNumberOfJobsPerProcess: 2

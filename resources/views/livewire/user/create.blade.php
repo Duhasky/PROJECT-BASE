@@ -11,6 +11,8 @@
       :messages="$errors->get('form.regist_number')" wire:model="form.regist_number" class="w-full" />
     <x-form.input name="password" label="Password" type="password" placeholder="Password"
       :messages="$errors->get('form.password')" wire:model="form.password" class="w-full" />
+    <x-form.input name="password_confirmation" label="Confirm Password" type="password" placeholder="Confirm Password"
+      :messages="$errors->get('form.password_confirmation')" wire:model="form.password_confirmation" class="w-full" />
   </div>
 
   <div class="flex justify-end border-t pt-4">
